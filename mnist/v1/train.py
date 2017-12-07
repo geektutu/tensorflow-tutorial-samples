@@ -18,7 +18,7 @@ class Train:
         # data_set/train-labels-idx1-ubyte.gz
         # data_set/t10k-images-idx3-ubyte.gz
         # data_set/t10k-labels-idx1-ubyte.gz
-        self.data = input_data.read_data_sets('data_set', one_hot=True)
+        self.data = input_data.read_data_sets('../data_set', one_hot=True)
 
     def train(self):
         # batch_size 是指每次迭代训练，传入训练的图片张数。
