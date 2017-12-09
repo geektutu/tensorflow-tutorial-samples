@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 from model import Network
 
+
 class Train:
     def __init__(self):
         self.net = Network()
@@ -22,7 +23,8 @@ class Train:
 
     def train(self):
         # batch_size 是指每次迭代训练，传入训练的图片张数。
-        # 数据集小，可以使用全数据集，数据大的情况下，为了提高训练速度，用随机抽取的n张图片来训练，效果与全数据集相近
+        # 数据集小，可以使用全数据集，数据大的情况下，
+        # 为了提高训练速度，用随机抽取的n张图片来训练，效果与全数据集相近
         # https://www.zhihu.com/question/32673260
         batch_size = 64
 
@@ -35,7 +37,8 @@ class Train:
             x, label = self.data.train.next_batch(batch_size)
             # 每次计算train，更新整个网络
             # loss只是为了看到损失的大小，方便打印
-            _, loss = self.sess.run([self.net.train, self.net.loss], feed_dict={self.net.x: x, self.net.label: label})
+            _, loss = self.sess.run([self.net.train, self.net.loss],
+                                    feed_dict={self.net.x: x, self.net.label: label})
 
             # 打印 loss，训练过程中将会看到，loss有变小的趋势
             # 代表随着训练的进行，网络识别图像的能力提高
@@ -43,14 +46,14 @@ class Train:
             if (i + 1) % 10 == 0:
                 print('第%5d步，当前loss：%.2f' % (i + 1, loss))
 
-
     def calculate_accuray(self):
         test_x = self.data.test.images
         test_label = self.data.test.labels
         # 注意：与训练不同的是，并没有计算 self.net.train
         # 只计算了accuracy这个张量，所以不会更新网络
         # 最终准确率约为0.91
-        accuracy = self.sess.run(self.net.accuracy, feed_dict={self.net.x: test_x, self.net.label: test_label})
+        accuracy = self.sess.run(self.net.accuracy,
+                                 feed_dict={self.net.x: test_x, self.net.label: test_label})
         print("准确率: %.2f，共测试了%d张图片 " % (accuracy, len(test_label)))
 
 
