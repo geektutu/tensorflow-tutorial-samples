@@ -20,6 +20,8 @@ class Predict:
         self.net = Network()
         self.sess = tf.Session()
         self.sess.run(tf.global_variables_initializer())
+
+        # 加载模型到sess中
         self.restore()
 
     def restore(self):
@@ -37,7 +39,7 @@ class Predict:
         x = np.array([1 - flatten_img])
         y = self.sess.run(self.net.y, feed_dict={self.net.x: x})
 
-        # 因为x只传入了一张图片，所以取y[0]
+        # 因为x只传入了一张图片，取y[0]即可
         # np.argmax()取得独热编码最大值的下标，即代表的数字
         print(image_path)
         print('        -> Predict digit', np.argmax(y[0]))

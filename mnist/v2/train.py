@@ -21,22 +21,23 @@ class Train:
         self.sess.run(tf.global_variables_initializer())
         self.data = input_data.read_data_sets('../data_set', one_hot=True)
 
-        # tf.train.Saver是用来保存训练结果的。
-        # max_to_keep 用来设置最多保存多少个模型，默认是5
-        # 如果保存的模型超过这个值，最旧的模型将被删除
-        self.saver = tf.train.Saver(max_to_keep=10)
-
     def train(self):
         batch_size = 64
         train_step = 10000
+        # 记录训练次数, 初始化为0
+        step = 0
+
         # 每隔1000步保存模型
         save_interval = 1000
-        # 记录训练次数, 当前已经训练步数初始化为0
-        step = 0
+
+        # tf.train.Saver是用来保存训练结果的。
+        # max_to_keep 用来设置最多保存多少个模型，默认是5
+        # 如果保存的模型超过这个值，最旧的模型将被删除
+        saver = tf.train.Saver(max_to_keep=10)
 
         ckpt = tf.train.get_checkpoint_state(CKPT_DIR)
         if ckpt and ckpt.model_checkpoint_path:
-            self.saver.restore(self.sess, ckpt.model_checkpoint_path)
+            saver.restore(self.sess, ckpt.model_checkpoint_path)
             # 读取网络中的global_step的值，即当前已经训练的次数
             step = self.sess.run(self.net.global_step)
             print('Continue from')
@@ -50,10 +51,10 @@ class Train:
             if step % 1000 == 0:
                 print('第%5d步，当前loss：%.2f' % (step, loss))
 
-            # 每隔1000步保存一次模型，模型保存在ckpt文件夹下名为model的文件，
+            # 模型保存在ckpt文件夹下
             # 模型文件名最后会增加global_step的值，比如1000的模型文件名为 model-1000
             if step % save_interval == 0:
-                self.saver.save(self.sess, CKPT_DIR + '/model', global_step=step)
+                saver.save(self.sess, CKPT_DIR + '/model', global_step=step)
 
     def calculate_accuray(self):
         test_x = self.data.test.images
