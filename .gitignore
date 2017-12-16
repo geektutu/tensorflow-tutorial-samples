@@ -1,6 +1,6 @@
 .DS_Store
 .vscode
 .idea
+ckpt
 
 __pycache__
-*.pyc
