@@ -11,6 +11,8 @@ tensorflow 1.4
 v2 版本比 v1 版本增加了模型的保存和继续训练
 '''
 
+CKPT_DIR = 'ckpt'
+
 
 class Train:
     def __init__(self):
@@ -29,23 +31,29 @@ class Train:
         train_step = 10000
         # 每隔1000步保存模型
         save_interval = 1000
+        # 记录训练次数, 当前已经训练步数初始化为0
+        step = 0
 
-        # step 记录训练次数
-        # 读取网络中的global_step的值，即当前已经训练的次数
-        step = self.sess.run(self.net.global_step)
+        ckpt = tf.train.get_checkpoint_state(CKPT_DIR)
+        if ckpt and ckpt.model_checkpoint_path:
+            self.saver.restore(self.sess, ckpt.model_checkpoint_path)
+            # 读取网络中的global_step的值，即当前已经训练的次数
+            step = self.sess.run(self.net.global_step)
+            print('Continue from')
+            print('        -> Minibatch update : ', step)
 
         while step < train_step:
             x, label = self.data.train.next_batch(batch_size)
             _, loss = self.sess.run([self.net.train, self.net.loss],
-                                          feed_dict={self.net.x: x, self.net.label: label})
+                                    feed_dict={self.net.x: x, self.net.label: label})
             step = self.sess.run(self.net.global_step)
-            if step % 10 == 0:
+            if step % 1000 == 0:
                 print('第%5d步，当前loss：%.2f' % (step, loss))
 
             # 每隔1000步保存一次模型，模型保存在ckpt文件夹下名为model的文件，
             # 模型文件名最后会增加global_step的值，比如1000的模型文件名为 model-1000
             if step % save_interval == 0:
-                self.saver.save(self.sess, 'ckpt/model', global_step=step)
+                self.saver.save(self.sess, CKPT_DIR + '/model', global_step=step)
 
     def calculate_accuray(self):
         test_x = self.data.test.images
