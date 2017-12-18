@@ -13,3 +13,4 @@
     > 1. 介绍了tensorflow中如何保存训练好的模型
     > 2. 介绍了如何从某一个模型为起点继续训练
     > 3. 介绍了模型如何加载使用，传入真实的图片如何识别
+- [tensorflow入门-mnist手写数字识别(二，可视化训练)](http://imtuzi.com/post/tensorflow-mnist-tensorboard-training.html)
