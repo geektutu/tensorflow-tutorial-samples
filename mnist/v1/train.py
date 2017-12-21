@@ -51,7 +51,7 @@ class Train:
             if (i + 1) % 10 == 0:
                 print('第%5d步，当前loss：%.2f' % (i + 1, loss))
 
-    def calculate_accuray(self):
+    def calculate_accuracy(self):
         test_x = self.data.test.images
         test_label = self.data.test.labels
         # 注意：与训练不同的是，并没有计算 self.net.train
@@ -65,4 +65,4 @@ class Train:
 if __name__ == "__main__":
     app = Train()
     app.train()
-    app.calculate_accuray()
+    app.calculate_accuracy()

@@ -56,7 +56,7 @@ class Train:
             if step % save_interval == 0:
                 saver.save(self.sess, CKPT_DIR + '/model', global_step=step)
 
-    def calculate_accuray(self):
+    def calculate_accuracy(self):
         test_x = self.data.test.images
         test_label = self.data.test.labels
         accuracy = self.sess.run(self.net.accuracy,
@@ -67,4 +67,4 @@ class Train:
 if __name__ == "__main__":
     app = Train()
     app.train()
-    app.calculate_accuray()
+    app.calculate_accuracy()
