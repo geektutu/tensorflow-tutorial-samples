@@ -20,6 +20,7 @@ class Network:
         predict = tf.equal(tf.argmax(self.label, 1), tf.argmax(self.y, 1))
         self.accuracy = tf.reduce_mean(tf.cast(predict, "float"))
 
+        # 创建 summary node
         # w, b 画直方图
         # loss, accuracy画标量图
         tf.summary.histogram('weight', self.w)

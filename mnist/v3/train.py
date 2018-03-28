@@ -28,7 +28,7 @@ class Train:
         save_interval = 1000
         saver = tf.train.Saver(max_to_keep=5)
 
-        # merge所有的图像，一起存储
+        # merge所有的summary node
         merged_summary_op = tf.summary.merge_all()
         # 可视化存储目录为当前文件夹下的 log
         merged_writer = tf.summary.FileWriter("./log", self.sess.graph)
@@ -43,8 +43,10 @@ class Train:
 
         while step < train_step:
             x, label = self.data.train.next_batch(batch_size)
-            _, loss, merged_summary = self.sess.run([self.net.train, self.net.loss, merged_summary_op],
-                                                    feed_dict={self.net.x: x, self.net.label: label})
+            _, loss, merged_summary = self.sess.run(
+                [self.net.train, self.net.loss, merged_summary_op],
+                feed_dict={self.net.x: x, self.net.label: label}
+            )
             step = self.sess.run(self.net.global_step)
 
             if step % 100 == 0:
