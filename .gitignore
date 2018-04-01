@@ -4,5 +4,6 @@
 mnist/v2/ckpt
 mnist/v3/ckpt
 mnist/v3/log
+make_data_set/data_set
 
 __pycache__
