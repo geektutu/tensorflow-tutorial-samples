@@ -20,3 +20,7 @@
     > [make_data_set](make_data_set)
     > 1. 介绍了如何使用numpy制作npy格式的数据集
     > 1. 介绍了如何使用h5py制作HDF5格式的数据集
+- [tensorflow2.0入门-mnist手写数字识别(五，CNN卷积神经网络))](https://geektutu.com/post/tensorflow2-mnist-cnn.html)
+    > [v4_cnn](v4_cnn)
+    > 1. 介绍了如何搭建CNN网络，准确率达到0.99
+    > 1. 使用TensorFlow2.0
