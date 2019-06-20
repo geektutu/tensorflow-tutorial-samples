@@ -1,8 +1,7 @@
 .DS_Store
 .vscode
 .idea
-mnist/v2/ckpt
-mnist/v3/ckpt
+ckpt
 mnist/v3/log
 make_data_set/data_set
 

@@ -46,8 +46,8 @@ class DataSource(object):
         self.train_images, self.train_labels = train_images, train_labels
         self.test_images, self.test_labels = test_images, test_labels
 
-    class Train:
-        def __init__(self):
+class Train:
+    def __init__(self):
         self.cnn = CNN()
         self.data = DataSource()
 
