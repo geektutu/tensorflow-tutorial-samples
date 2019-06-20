@@ -4,5 +4,6 @@
 ckpt
 mnist/v3/log
 make_data_set/data_set
-
+.ipynb_checkpoints
+*.h5
 __pycache__
