@@ -31,7 +31,8 @@ while True:
     time.sleep(0.01)
     # transform_state函数 与 训练时的一致
     s = transform_state(s)
-    s, reward, done, _ = env.step(np.argmax(Q[s]))
+    a = np.argmax(Q[s]) if s in Q else 0
+    s, reward, done, _ = env.step(a)
     score += reward
     if done:
         print('score:', score)

@@ -6,4 +6,5 @@ mnist/v3/log
 make_data_set/data_set
 .ipynb_checkpoints
 *.h5
+*.pickle
 __pycache__
