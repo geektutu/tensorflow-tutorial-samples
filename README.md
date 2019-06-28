@@ -5,6 +5,11 @@
 
 ## OpenAI gym
 
+- [TensorFlow 2.0 (八) - 强化学习 DQN 玩转 gym Mountain Car](https://geektutu.com/post/tensorflow2-gym-dqn.html)
+    - [Github - gym/MountainCar-v0-dqn](https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/gym/MountainCar-v0-dqn)
+    - 介绍了DQN(Deep Q-Learning)来玩MountainCar-v0游戏
+    - Q-Table用神经网络来代替。
+
 - [TensorFlow 2.0 (七) - 强化学习 Q-Learning 玩转 OpenAI gym](https://geektutu.com/post/tensorflow2-gym-q-learning.html)
     - [Github - gym/MountainCar-v0-q-learning](https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/gym/MountainCar-v0-q-learning)
     - 介绍了使用Q-Learning(创建Q-Table)来玩MountainCar-v0游戏
@@ -16,6 +21,7 @@
     - 使用TensorFlow 2.0
 
 ## mnist
+
 - [TensorFlow 2.0 (五) - mnist手写数字识别(CNN卷积神经网络)](https://geektutu.com/post/tensorflow2-mnist-cnn.html)
     - [Github - v4_cnn](https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/mnist/v4_cnn)
     - 介绍了如何搭建CNN网络，准确率达到0.99

@@ -14,14 +14,14 @@ class DQN(object):
         self.replay_size = 2000  # 训练集大小
         self.replay_queue = deque(maxlen=self.replay_size)
         self.model = self.create_model()
-        self.old_model = self.create_model()
+        self.target_model = self.create_model()
 
     def create_model(self):
         """创建一个隐藏层为100的神经网络"""
         STATE_DIM, ACTION_DIM = 2, 3
         model = models.Sequential([
             layers.Dense(100, input_dim=STATE_DIM, activation='relu'),
-            layers.Dense(ACTION_DIM, activation="linear",)
+            layers.Dense(ACTION_DIM, activation="linear")
         ])
         model.compile(loss='mean_squared_error',
                       optimizer=optimizers.Adam(0.001))
@@ -48,16 +48,16 @@ class DQN(object):
         if len(self.replay_queue) < self.replay_size:
             return
         self.step += 1
-        # 每 update_freq 步，将 model 的权重赋值给 old_model
+        # 每 update_freq 步，将 model 的权重赋值给 target_model
         if self.step % self.update_freq == 0:
-            self.old_model.set_weights(self.model.get_weights())
+            self.target_model.set_weights(self.model.get_weights())
 
         replay_batch = random.sample(self.replay_queue, batch_size)
         s_batch = np.array([replay[0] for replay in replay_batch])
         next_s_batch = np.array([replay[2] for replay in replay_batch])
 
         Q = self.model.predict(s_batch)
-        Q_next = self.old_model.predict(next_s_batch)
+        Q_next = self.target_model.predict(next_s_batch)
 
         # 使用公式更新训练集中的Q值
         for i, replay in enumerate(replay_batch):
