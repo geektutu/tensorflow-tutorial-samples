@@ -1,4 +1,4 @@
-# TensorFlow 2.0 图像识别与强化学习
+# TensorFlow 2.0 Tutorial 入门教程实战案例
 
 > 用最白话的语言，讲解机器学习、神经网络与深度学习
 > 示例基于 TensorFlow 1.4 和 TensorFlow 2.0 实现
