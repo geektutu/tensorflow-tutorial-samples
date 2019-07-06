@@ -3,7 +3,15 @@
 > 用最白话的语言，讲解机器学习、神经网络与深度学习
 > 示例基于 TensorFlow 1.4 和 TensorFlow 2.0 实现
 
+## 知乎专栏
+
+**欢迎关注我的知乎专栏 [https://zhuanlan.zhihu.com/geektutu](https://zhuanlan.zhihu.com/geektutu)**
+
 ## OpenAI gym
+
+- [TensorFlow 2.0 (九) - 强化学习70行代码实战 Policy Gradient](https://geektutu.com/post/tensorflow2-gym-pg.html)
+    - [Github - gym/CartPole-v0-policy-gradient](https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/gym/CartPole-v0-policy-gradient)
+    - 介绍了策略梯度算法(Policy Gradient)来玩 CartPole-v0
 
 - [TensorFlow 2.0 (八) - 强化学习 DQN 玩转 gym Mountain Car](https://geektutu.com/post/tensorflow2-gym-dqn.html)
     - [Github - gym/MountainCar-v0-dqn](https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/gym/MountainCar-v0-dqn)
