@@ -3,9 +3,12 @@
 > 用最白话的语言，讲解机器学习、神经网络与深度学习
 > 示例基于 TensorFlow 1.4 和 TensorFlow 2.0 实现
 
-## 知乎专栏
+## 相关链接
 
-**欢迎关注我的知乎专栏 [https://zhuanlan.zhihu.com/geektutu](https://zhuanlan.zhihu.com/geektutu)**
+- [知乎专栏](https://zhuanlan.zhihu.com/geektutu)
+- [机器学习笔试面试题](https://geektutu.com/post/qa-ml-1.html)，[Github](https://github.com/geektutu/interview-questions)
+- [TensorFlow 2.0 中文文档](https://geektutu.com/post/tf2doc.html)，[Github](https://github.com/geektutu/tensorflow2-docs-zh)
+- [TensorFlow 2.0 图像识别&强化学习实战](https://geektutu.com/post/tensorflow2-mnist-cnn.html)，[Github](https://github.com/geektutu/tensorflow-tutorial-samples)
 
 ## OpenAI gym
 
