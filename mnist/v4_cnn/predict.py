@@ -21,8 +21,8 @@ class Predict(object):
     def predict(self, image_path):
         # 以黑白方式读取图片
         img = Image.open(image_path).convert('L')
-        flatten_img = np.reshape(img, (28, 28, 1))
-        x = np.array([1 - flatten_img])
+        img = np.reshape(img, (28, 28, 1)) / 255.
+        x = np.array([1 - img])
 
         # API refer: https://keras.io/models/model/
         y = self.cnn.model.predict(x)
